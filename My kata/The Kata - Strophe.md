@@ -83,7 +83,7 @@ for (var i = 0; i < 50; i++) {
 })
 ```
 
-##Exemple test case
+## Exemple test case
 
 ```
 const chai = require("chai");
