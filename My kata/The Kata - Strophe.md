@@ -85,6 +85,7 @@ for (var i = 0; i < 50; i++) {
 
 ##Exemple test case
 
+```
 const chai = require("chai");
 const assert = chai.assert;
 
@@ -98,3 +99,4 @@ describe("Fixed Tests", function() {
     assert.strictEqual(hacheTest(1,0), "let's go the restaurant!");
   })
 });
+```
