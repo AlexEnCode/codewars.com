@@ -112,21 +112,6 @@ const assert = chai.assert;
 
 describe("Fixed Tests", function() {
   it("Basic Test Cases", function() {        
-    assert.strictEqual(hacheTest(12,3000), "let's go the restaurant!");
-    assert.strictEqual(hacheTest(6,1500), "let's go the restaurant!");
-    assert.strictEqual(hacheTest(12,1000), "let's go the restaurant!");
-    assert.strictEqual(hacheTest(1,3000), "No meal for you !!");
-    assert.strictEqual(hacheTest(0,3000), "No meal for you !!");
-    assert.strictEqual(hacheTest(1,0), "let's go the restaurant!");
-  })
-});
-```
-
-  const chai = require("chai");
-const assert = chai.assert;
-
-describe("Fixed Tests", function() {
-  it("Basic Test Cases", function() {        
     function runTest(students, objective, expected) {
       const result = hacheTest(students, objective);
       if (result !== expected) {
@@ -155,3 +140,4 @@ describe("Fixed Tests", function() {
     runTest(1, 0, "let's go the restaurant!");
   });
 });
+```
