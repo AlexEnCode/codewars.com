@@ -55,32 +55,53 @@ const Test = require('@codewars/test-compat');
 const chai = require("chai");
 const assert = chai.assert;
 
-describe("Test Suite",()=>{
-  
-  
-it("Fixed tests",()=>{
-      
-    assert.strictEqual(hacheTest(12,1000), "let's go the restaurant!");
-    assert.strictEqual(hacheTest(1,3000), "No meal for you !!");
-  })
+function hacheTest(students, objective) {
+  if (students === 0 || objective === 0) {
+    return "let's go the restaurant!";
+  }
 
+  return students * 80 * 7 > objective ? "let's go the restaurant!" : "No meal for you !!";
+}
+
+describe("Test Suite", () => {
   
-it("Random tests", () => {  
-function  hacheTestSol(students , objective){
-  return (((objective/students)/7) <=80) ? "let's go the restaurant!" : "No meal for you !!";
-}
   
-function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max + 1 - min) + min);
-}
-for (var i = 0; i < 50; i++) {
-  var students = getRandomNumber(1, 10000); // generator for students number
-  var objective = getRandomNumber(1, 10000); // // generator for objectives even inputs
-  console.log() ;
-  Test.assertEquals(hacheTest(students, objective), hacheTestSol(students, objective));
-}
-})
-})
+    it("Basic Test Cases", function() {        
+      assert.strictEqual(hacheTest(12, 3000), "let's go the restaurant!");
+      assert.strictEqual(hacheTest(6, 1500), "let's go the restaurant!");
+      assert.strictEqual(hacheTest(12, 1000), "let's go the restaurant!");
+      assert.strictEqual(hacheTest(1, 3000), "No meal for you !!");
+      assert.strictEqual(hacheTest(0, 3000), "let's go the restaurant!");
+      assert.strictEqual(hacheTest(1, 0), "let's go the restaurant!");
+      });
+
+  it("Random tests", () => {  
+    function hacheTestSol(students, objective) {
+      return students * 80 * 7 > objective ? "let's go the restaurant!" : "No meal for you !!";
+    }
+
+    function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max + 1 - min) + min);
+    }
+
+    for (var i = 0; i < 50; i++) {
+      var students = getRandomNumber(1, 50);
+      var objective = getRandomNumber(1, 5000);
+
+      console.log("Test Case:", i + 1);
+      console.log("Students:", students);
+      console.log("Objective:", objective);
+
+      var result = hacheTest(students, objective);
+      var expectedResult = hacheTestSol(students, objective);
+
+      console.log("Result:", result);
+      console.log("Expected Result:", expectedResult);
+
+      Test.assertEquals(result, expectedResult);
+    }
+  })
+});
 ```
 
 ## Exemple test case
@@ -100,3 +121,37 @@ describe("Fixed Tests", function() {
   })
 });
 ```
+
+  const chai = require("chai");
+const assert = chai.assert;
+
+describe("Fixed Tests", function() {
+  it("Basic Test Cases", function() {        
+    function runTest(students, objective, expected) {
+      const result = hacheTest(students, objective);
+      if (result !== expected) {
+        console.log(`Test failed for Students: ${students}, Objective: ${objective}`);
+        console.log(`Expected: ${expected} | Actual: ${result}`);
+      }
+      assert.strictEqual(result, expected);
+    }
+
+    // Test 1
+    runTest(12, 3000, "let's go the restaurant!");
+
+    // Test 2
+    runTest(6, 1500, "let's go the restaurant!");
+
+    // Test 3
+    runTest(12, 1000, "let's go the restaurant!");
+
+    // Test 4
+    runTest(1, 3000, "No meal for you !!");
+
+    // Test 5
+    runTest(0, 3000, "No meal for you !!");
+
+    // Test 6
+    runTest(1, 0, "let's go the restaurant!");
+  });
+});
