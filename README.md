@@ -1,5 +1,5 @@
 <p align="center">
-<img src="docs/codewars.png" /></p>
+<img src="docs/logocodewars.png" /></p>
 
-<p align="center" style=font-size:35px>   You will find here my attemps to create my own Kata on codewars.</p>
+<p align="center">You will find here some attemps to create my own Kata on codewars.</p>
 
